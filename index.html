@@ -1,15 +1,75 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
+		<link rel="icon" type="image/png" href="images/DA1icon.png">
 		<title>Dawood Ahmed — Portfolio</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
 		<style>
 			/* Increase size of GitHub & LinkedIn icons */
 			.icons li a {
-				font-size: 1.5rem !important; /* Adjust size */
+				font-size: 1.5rem !important;
+			}
+
+			/* Make the first line of the name larger than the second */
+			h1.name {
+				margin: 0.5rem 0 0.25rem;
+				font-weight: 700;
+				line-height: 1;
+			}
+			h1.name .name-first {
+				display: block;
+				font-size: clamp(2rem, 5vw, 3rem);
+			}
+			h1.name .name-last {
+				display: block;
+				font-size: clamp(2rem, 5vw, 3rem);
+				opacity: 0.95;
+			}
+
+			/* --- Styles for post headings and subheadings --- */
+			/* Make the section label (e.g. "Featured Project") larger/stronger */
+			.posts article header .date {
+			  display: block;
+			  font-size: clamp(1.05rem, 2.4vw, 1.3rem); /* heading (Featured Project) — larger */
+			  font-weight: 700;
+			  text-transform: uppercase;
+			  letter-spacing: 0.06em;
+			  margin-bottom: 0.35rem;
+			  color: #222;
+			}
+
+			/* Base h2 styling for project title block */
+			.posts article header h2 {
+			  margin: 0 0 0.35rem 0;
+			  color: #111;
+			}
+			.posts article header h2 a {
+			  text-decoration: none;
+			  color: inherit;
+			}
+
+			/* Split the project title into main and sub lines (first larger than second) */
+			.posts article header h2 .title-main {
+			  display: block;
+			  font-size: clamp(1.25rem, 3.2vw, 1.6rem); /* larger project title line */
+			  font-weight: 700;
+			  line-height: 1.05;
+			}
+			.posts article header h2 .title-sub {
+			  display: block;
+			  font-size: clamp(0.95rem, 2.1vw, 1.05rem); /* smaller subheading line */
+			  font-weight: 500;
+			  color: #666; /* subtle contrast */
+			  margin-top: 0.12rem;
+			}
+
+			/* Optional small spacing fix when image is missing */
+			.posts article header + .image.fit {
+				margin-top: 0.5rem;
 			}
 		</style>
 	</head>
@@ -21,7 +81,7 @@
 				<div style="text-align:center; margin-bottom:2rem;">
 					<img src="images/me.jpg" alt="Dawood Ahmed" style="width:250px;height:250px;border-radius:50%;object-fit:cover;border:2px solid rgba(0,0,0,0.08);" />
 					<div>
-						<h1>Dawood<br />Ahmed</h1>
+						<h1 class="name"><span class="name-first">Dawood</span><span class="name-last">Ahmed</span></h1>
 						<p>Computer Science student with technical experience in Python, Java, SQL, and AI modeling, complemented by strong communication, and customer-facing experience. Recognized for adaptability, teamwork, and effective problem solving.</p>
 					</div>
 				</div>
@@ -53,7 +113,12 @@
 					<article>
 						<header>
 							<span class="date">Featured Project</span>
-							<h2><a href="#">WLU Map Project<br />CP 470 Android Programming</a></h2>
+							<h2>
+								<a href="#">
+									<span class="title-main">WLU Map Project</span>
+									<span class="title-main">CP 470 Android Programming</span>
+								</a>
+							</h2>
 						</header>
 						<a href="#" class="image fit"><img src="images/wlump.png" alt="WLU Map Project Screenshot" style="height:400px; object-fit:contain;" /></a>
 						<p>Android application developed in <b>Java</b> integrating the Google Maps API. Enables users to navigate campus, search buildings, locate facilities, and view events. Demonstrates Android development, API integration, and UI/UX considerations.</p>
