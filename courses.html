@@ -1,0 +1,515 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<link rel="icon" type="image/png" href="images/DA1icon.png">
+		<title>Dawood Ahmed — Courses</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+		<style>
+			/* Small page-specific overrides to match portfolio style */
+			body { -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+
+			/* Header name sizing (keeps consistent with index page) */
+			h1.name { margin: 0.5rem 0 0.25rem; font-weight:700; line-height:1; }
+			h1.name .name-first{ display:block; font-size:clamp(2rem,5vw,3rem); }
+			h1.name .name-last{ display:block; font-size:clamp(2rem,5vw,3rem); opacity:.95; }
+
+			/* Main content styling */
+			.courses {
+				max-width: 1000px;
+				margin: 0 auto;
+				padding: 2rem 1rem;
+			}
+
+			.courses header.page-header {
+				text-align: center;
+				margin-bottom: 2rem;
+			}
+
+			.courses header.page-header h2 {
+				font-size: clamp(1.5rem,3.6vw,2rem);
+				margin: .5rem 0;
+				font-weight: 700;
+			}
+
+			.courses header.page-header p {
+				color:#666;
+				max-width: 72ch;
+				margin: 0.5rem auto 0;
+			}
+
+			/* Section headers for course categories */
+			.course-section {
+				margin-top: 2.5rem;
+				margin-bottom: 1.5rem;
+			}
+
+			.course-section h3 {
+				font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+				font-weight: 700;
+				color: #222;
+				border-bottom: 2px solid #0066cc;
+				padding-bottom: 0.5rem;
+				margin-bottom: 1.25rem;
+			}
+
+			.course-section .section-note {
+				color: #666;
+				font-size: 0.95rem;
+				font-style: italic;
+				margin-bottom: 1rem;
+			}
+
+			.course-grid {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 1.5rem;
+			}
+
+			@media (min-width:720px) { 
+				.course-grid { 
+					grid-template-columns: repeat(2, 1fr); 
+				} 
+			}
+
+			.course {
+				background: #fff;
+				border-radius: 8px;
+				padding: 1.25rem;
+				box-shadow: 0 1px 6px rgba(20,20,30,0.06);
+				border: 1px solid rgba(0,0,0,0.04);
+				transition: box-shadow 0.2s ease;
+			}
+
+			.course:hover {
+				box-shadow: 0 4px 12px rgba(20,20,30,0.12);
+			}
+
+			.course .course-meta {
+				display:flex;
+				gap:.5rem;
+				flex-wrap:wrap;
+				align-items:center;
+				margin-bottom:.5rem;
+			}
+
+			.course .code {
+				font-size:.85rem;
+				color:#fff;
+				font-weight:700;
+				background: #0066cc;
+				padding: .3rem .6rem;
+				border-radius: 4px;
+			}
+
+			.course .course-title {
+				margin: .35rem 0 .5rem 0;
+			}
+
+			.course .course-title .title-main {
+				display:block;
+				font-weight:700;
+				font-size:clamp(1.1rem,2.4vw,1.3rem);
+				line-height:1.05;
+				color: #111;
+			}
+
+			.course p.description {
+				margin: .6rem 0;
+				color: #333;
+				font-size: .96rem;
+				line-height: 1.5;
+			}
+
+			.course .skills {
+				display:flex;
+				flex-wrap:wrap;
+				gap:.4rem;
+				margin-top:.75rem;
+			}
+
+			.course .skill {
+				background:#eef2ff;
+				color:#0066cc;
+				font-size:.8rem;
+				padding:.35rem .65rem;
+				border-radius:6px;
+				border:1px solid rgba(0,102,204,0.1);
+				font-weight: 500;
+			}
+
+			.icons li a {
+				font-size: 1.5rem !important;
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<div id="wrapper" class="fade-in">
+
+			<header id="header">
+				<a href="index.html" class="logo">Portfolio</a>
+			</header>
+
+			<nav id="nav">
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="generic.html">About / Experience</a></li>
+					<li><a href="elements.html">Skills / Projects</a></li>
+					<li class="active"><a href="courses.html">Courses</a></li>
+					<li><a href="resume.html">Resume</a></li>
+				</ul>
+				<ul class="icons">
+					<li><a href="https://github.com/Dawood-1123" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+					<li><a href="https://www.linkedin.com/in/ad-dawood/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+				</ul>
+			</nav>
+
+			<div id="main">
+				<section class="courses">
+					<header class="page-header">
+						<h1 class="name"><span class="name-first">Dawood</span><span class="name-last">Ahmed</span></h1>
+						<h2>Relevant Coursework</h2>
+						<p>Verified course descriptions from Wilfrid Laurier University. Organized by category: foundational programming, systems & databases, applied specializations, and mathematics/statistics.</p>
+					</header>
+
+					<!-- SECTION 1: Core & Highly Relevant -->
+					<div class="course-section">
+						<h3>📌 Core & Highly Relevant (Programming + Data Structures / Systems)</h3>
+						<p class="section-note">Foundational courses covering programming fundamentals, data structures, OOP, and systems concepts.</p>
+
+						<div class="course-grid">
+
+							<article class="course">
+								<div class="course-meta">
+									<span class="code">CP104</span>
+								</div>
+								<div class="course-title">
+									<span class="title-main">Introduction to Programming</span>
+								</div>
+								<p class="description">
+									An introductory course designed to familiarize students with modern software development techniques. Emphasis is on problem-solving and structured program design methodologies. Programming projects are implemented in a widely used high-level language.
+								</p>
+								<div class="skills">
+									<span class="skill">Problem Solving</span>
+									<span class="skill">Structured Design</span>
+									<span class="skill">High-Level Languages</span>
+								</div>
+							</article>
+
+							<article class="course">
+								<div class="course-meta">
+									<span class="code">CP164</span>
+								</div>
+								<div class="course-title">
+									<span class="title-main">Data Structures I</span>
+								</div>
+								<p class="description">
+									Introduction to the study of data structures and their applications, including recursion, searching, sorting, queues, stacks, and heaps. Introduces analysis of algorithms and big "O" notation.
+								</p>
+								<div class="skills">
+									<span class="skill">Data Structures</span>
+									<span class="skill">Algorithms</span>
+									<span class="skill">Big-O Analysis</span>
+									<span class="skill">Recursion</span>
+								</div>
+							</article>
+
+							<article class="course">
+								<div class="course-meta">
+									<span class="code">CP213</span>
+								</div>
+								<div class="course-title">
+									<span class="title-main">Intro to Object-Oriented Programming</span>
+								</div>
+								<p class="description">
+									Focuses on the principles of object-oriented programming (OOP) such as encapsulation, inheritance, and polymorphism. Students develop skills in designing, implementing, and testing OOP solutions using Java.
+								</p>
+								<div class="skills">
+									<span class="skill">OOP Principles</span>
+									<span class="skill">Java</span>
+									<span class="skill">Inheritance</span>
+									<span class="skill">Polymorphism</span>
+								</div>
+							</article>
+
+							<article class="course">
+								<div class="course-meta">
+									<span class="code">CP264</span>
+								</div>
+								<div class="course-title">
+									<span class="title-main">Data Structures II</span>
+								</div>
+								<p class="description">
+									Covers more advanced data structures and their applications. Topics include C language, arrays, pointers, dynamic memory allocation, files, structures, stacks, queues, searching, sorting, linked lists, trees, heaps, and graphs.
+								</p>
+								<div class="skills">
+									<span class="skill">C Programming</span>
+									<span class="skill">Pointers</span>
+									<span class="skill">Linked Lists</span>
+									<span class="skill">Trees & Graphs</span>
+								</div>
+							</article>
+
+							<article class="course">
+								<div class="course-meta">
+									<span class="code">CP317</span>
+								</div>
+								<div class="course-title">
+									<span class="title-main">Software Engineering</span>
+								</div>
+								<p class="description">
+									Study of software development activities including process models, analysis, design, implementation, testing, project management, and advanced issues of the software life cycle.
+								</p>
+								<div class="skills">
+									<span class="skill">SDLC</span>
+									<span class="skill">Software Design</span>
+									<span class="skill">Testing</span>
+									<span class="skill">Project Management</span>
+								</div>
+							</article>
+
+							<article class="course">
+								<div class="course-meta">
+									<span class="code">CP367</span>
+								</div>
+								<div class="course-title">
+									<span class="title-main">Intro to System Programming</span>
+								</div>
+								<p class="description">
+									Contemporary ideas and techniques in system programming using C, including Unix OS introduction (commands, file systems, device control), signal handling, process communication, shell programming and software tools.
+								</p>
+								<div class="skills">
+									<span class="skill">C Programming</span>
+									<span class="skill">Unix/Linux</span>
+									<span class="skill">Shell Scripting</span>
+									<span class="skill">Systems Concepts</span>
+								</div>
+							</article>
+
+						</div>
+					</div>
+
+					<!-- SECTION 2: Systems, Databases & Professional Practice -->
+					<div class="course-section">
+						<h3>📌 Systems, Databases & Professional Practice</h3>
+						<p class="section-note">Courses covering operating systems, database design, and professional ethics in computing.</p>
+
+						<div class="course-grid">
+
+							<article class="course">
+								<div class="course-meta">
+									<span class="code">CP386</span>
+								</div>
+								<div class="course-title">
+									<span class="title-main">Operating Systems</span>
+								</div>
+								<p class="description">
+									Operating system services and mechanisms: file systems, CPU scheduling, memory management/virtual memory, disk scheduling, deadlock mechanisms, concurrency and protection.
+								</p>
+								<div class="skills">
+									<span class="skill">OS Concepts</span>
+									<span class="skill">Memory Management</span>
+									<span class="skill">Scheduling</span>
+									<span class="skill">Concurrency</span>
+								</div>
+							</article>
+
+							<article class="course">
+								<div class="course-meta">
+									<span class="code">CP363</span>
+								</div>
+								<div class="course-title">
+									<span class="title-main">Database I</span>
+								</div>
+								<p class="description">
+									Introduction to database systems. Topics include data models, query languages, database design, recovery and concurrency, integrity, and security. Covers relational model fundamentals and SQL.
+								</p>
+								<div class="skills">
+									<span class="skill">SQL</span>
+									<span class="skill">Database Design</span>
+									<span class="skill">Transactions</span>
+									<span class="skill">Data Models</span>
+								</div>
+							</article>
+
+							<article class="course">
+								<div class="course-meta">
+									<span class="code">CP373</span>
+								</div>
+								<div class="course-title">
+									<span class="title-main">Ethics & Professional Practice in Computer Science</span>
+								</div>
+								<p class="description">
+									Introduction to ethical issues relevant to computing: reliability, safety, privacy, computer crime, intellectual property, and societal impacts of computing technology.
+								</p>
+								<div class="skills">
+									<span class="skill">Professional Ethics</span>
+									<span class="skill">Privacy & Security</span>
+									<span class="skill">IP Law</span>
+									<span class="skill">Social Impact</span>
+								</div>
+							</article>
+
+						</div>
+					</div>
+
+					<!-- SECTION 3: Applied & Specialized CS Courses -->
+					<div class="course-section">
+						<h3>📌 Applied & Specialized CS Courses</h3>
+						<p class="section-note">Upper-level applied courses in cryptography, mobile development, and quantum computing.</p>
+
+						<div class="course-grid">
+
+							<article class="course">
+								<div class="course-meta">
+									<span class="code">CP460</span>
+								</div>
+								<div class="course-title">
+									<span class="title-main">Applied Cryptography</span>
+								</div>
+								<p class="description">
+									Study of algorithms and issues in applied cryptography: history of cryptography, block and stream ciphers, public-key encryption, digital signatures, key management and current issues in information security.
+								</p>
+								<div class="skills">
+									<span class="skill">Cryptography</span>
+									<span class="skill">Encryption</span>
+									<span class="skill">Information Security</span>
+									<span class="skill">Key Management</span>
+								</div>
+							</article>
+
+							<article class="course">
+								<div class="course-meta">
+									<span class="code">CP470</span>
+								</div>
+								<div class="course-title">
+									<span class="title-main">Android Programming</span>
+								</div>
+								<p class="description">
+									Software development for Android mobile devices using Android development tools with Java. Includes comprehensive coverage of the Android SDK, activity lifecycle, UI design, and a major course project on Android app creation.
+								</p>
+								<div class="skills">
+									<span class="skill">Java</span>
+									<span class="skill">Android SDK</span>
+									<span class="skill">Mobile Development</span>
+									<span class="skill">Google Maps API</span>
+								</div>
+							</article>
+
+							<article class="course">
+								<div class="course-meta">
+									<span class="code">CP351</span>
+								</div>
+								<div class="course-title">
+									<span class="title-main">Quantum Computing</span>
+								</div>
+								<p class="description">
+									Foundational topics in quantum computation and information science. Covers quantum bits, quantum gates, quantum algorithms, and applications of quantum computing.
+								</p>
+								<div class="skills">
+									<span class="skill">Quantum Computing</span>
+									<span class="skill">Quantum Algorithms</span>
+									<span class="skill">Quantum Information</span>
+								</div>
+							</article>
+
+						</div>
+					</div>
+
+					<!-- SECTION 4: Core Mathematics & Statistics -->
+					<div class="course-section">
+						<h3>📌 Core Mathematics & Statistics (Required for CS Foundation)</h3>
+						<p class="section-note">Essential quantitative and mathematical foundations for computer science.</p>
+
+						<div class="course-grid">
+
+							<article class="course">
+								<div class="course-meta">
+									<span class="code">MA103</span>
+								</div>
+								<div class="course-title">
+									<span class="title-main">Calculus I</span>
+								</div>
+								<p class="description">
+									Limits and continuity; differential and integral calculus of functions of a single variable; the Mean Value Theorem; determination of extrema; the Fundamental Theorem of Calculus and techniques of integration; introduction to series.
+								</p>
+								<div class="skills">
+									<span class="skill">Differentiation</span>
+									<span class="skill">Integration</span>
+									<span class="skill">Limits</span>
+									<span class="skill">Series</span>
+								</div>
+							</article>
+
+							<article class="course">
+								<div class="course-meta">
+									<span class="code">MA123</span>
+								</div>
+								<div class="course-title">
+									<span class="title-main">Intro to Linear Algebra with Applications</span>
+								</div>
+								<p class="description">
+									Fundamentals of linear algebra: systems of linear equations and Gaussian elimination; matrices and matrix operations; matrix inverse and rank; determinants; vector geometry; linear combinations, span, linear independence; introduction to eigenvalues and eigenvectors.
+								</p>
+								<div class="skills">
+									<span class="skill">Linear Systems</span>
+									<span class="skill">Matrices</span>
+									<span class="skill">Eigenvalues</span>
+									<span class="skill">Vector Geometry</span>
+								</div>
+							</article>
+
+							<article class="course">
+								<div class="course-meta">
+									<span class="code">ST230</span>
+								</div>
+								<div class="course-title">
+									<span class="title-main">Intro to Probability & Statistics for Science</span>
+								</div>
+								<p class="description">
+									Probability and statistics fundamentals relevant to science: data collection and description; elementary probability theory; random variables and expectations; sampling theory, Central Limit Theorem; estimation and hypothesis testing.
+								</p>
+								<div class="skills">
+									<span class="skill">Probability</span>
+									<span class="skill">Statistics</span>
+									<span class="skill">Hypothesis Testing</span>
+									<span class="skill">Data Analysis</span>
+								</div>
+							</article>
+
+						</div>
+					</div>
+
+				</section>
+			</div>
+
+			<!-- Footer -->
+			<footer id="footer">
+				<section class="split contact">
+					<section class="alt">
+						<h3>Location</h3>
+						<p>Ontario</p>
+					</section>
+				</section>
+			</footer>
+
+			<div id="copyright">
+				<ul><li>&copy; 2026 Dawood Ahmed</li><li>Design Template: HTML5 UP</li></ul>
+			</div>
+
+		</div>
+
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
