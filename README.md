@@ -1,35 +1,30 @@
-# Dawood Ahmed — Portfolio
+# Dawood Ahmed: Portfolio
 
-A responsive personal portfolio website showcasing Dawood Ahmed’s experience, technical skills, projects, resume, and contact information.
+Personal portfolio site for Dawood Ahmed, Computer Science graduate (Wilfrid Laurier University) focused on data engineering and data science.
+
+**Live site:** https://dawood-1123.github.io/my-portfolio/
+
+## Sections
+- About, skills and current role
+- Projects with filters (data engineering, data science & retrieval, systems, software)
+- Experience timeline, education, certifications and coursework
+- Contact and resume download
 
 ## Built with
-
-- HTML5
-- CSS3 and Sass
-- JavaScript and jQuery
-- Font Awesome
-- HTML5 UP's Massively template
+Plain HTML, CSS and a little JavaScript in a single `index.html`. No build step or framework. Fonts from Google Fonts. Responsive down to phone width, and respects reduced-motion settings.
 
 ## Run locally
-
-No build step is required. Clone the repository and open `index.html` in a browser.
-
 ```bash
 git clone https://github.com/Dawood-1123/my-portfolio.git
 cd my-portfolio
+# open index.html in a browser, or use any static server, e.g.
+python -m http.server 8000
 ```
 
-For local development with live reload, use any static-file server, such as the VS Code Live Server extension.
-
 ## Structure
-
-- `index.html` — landing page
-- `generic.html` — about and experience page
-- `elements.html` — skills and projects page
-- `resume.html` — resume page
-- `assets/` — stylesheets, scripts, and webfonts
-- `images/` — profile and project images
-
-## Credits
-
-The design is based on the [Massively](https://html5up.net/massively) template by HTML5 UP, released under the Creative Commons Attribution 3.0 license.
+```
+index.html            the whole site
+images/profile.jpg    profile photo
+images/project-*.jpg  project thumbnails
+Dawood-Ahmed-Resume.pdf
+```

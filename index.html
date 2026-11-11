@@ -1,255 +1,530 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<link rel="icon" type="image/png" href="images/DA1icon.png">
-		<title>Dawood Ahmed — Portfolio</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dawood Ahmed | Data Engineering & Data Science</title>
+<meta name="description" content="Dawood Ahmed: Computer Science graduate from Wilfrid Laurier University focused on data engineering and data science.">
+<meta property="og:title" content="Dawood Ahmed | Data Engineering & Data Science">
+<meta property="og:description" content="Projects, experience and resume of Dawood Ahmed, CS graduate from Wilfrid Laurier University.">
+<meta property="og:image" content="images/project-ecommerce-pipeline.jpg">
+<link rel="icon" href="images/DA1icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b1220; --bg2:#0f1a2e; --card:#111c33; --line:#1e2b45;
+  --text:#e6edf7; --muted:#93a3bd; --accent:#38bdf8; --accent2:#a78bfa;
+  --radius:16px; --max:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
 
-		<style>
-			/* Increase size of GitHub & LinkedIn icons */
-			.icons li a {
-				font-size: 1.5rem !important;
-			}
+/* nav */
+header{position:sticky;top:0;z-index:50;background:rgba(11,18,32,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:800;letter-spacing:-.5px;font-size:18px}
+.logo span{color:var(--accent)}
+.links{display:flex;gap:26px;font-size:14px;color:var(--muted)}
+.links a:hover{color:var(--text)}
+.menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:10px;padding:6px 10px;font-size:14px;cursor:pointer}
 
-			/* Make the first line of the name larger than the second */
-			h1.name {
-				margin: 0.5rem 0 0.25rem;
-				font-weight: 700;
-				line-height: 1;
-			}
-			h1.name .name-first {
-				display: block;
-				font-size: clamp(2rem, 5vw, 3rem);
-			}
-			h1.name .name-last {
-				display: block;
-				font-size: clamp(2rem, 5vw, 3rem);
-				opacity: 0.95;
-			}
+/* hero */
+.hero{padding:96px 0 72px;background:radial-gradient(800px 400px at 85% 0%,rgba(56,189,248,.14),transparent 60%),radial-gradient(600px 300px at 10% 20%,rgba(167,139,250,.10),transparent 60%)}
+.hero-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:48px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--accent);border:1px solid rgba(56,189,248,.35);background:rgba(56,189,248,.08);padding:6px 12px;border-radius:999px;margin-bottom:22px}
+.dot{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 0 4px rgba(52,211,153,.18)}
+h1{font-size:clamp(38px,6vw,60px);line-height:1.05;letter-spacing:-1.8px;margin:0 0 14px;font-weight:800}
+.role{font-size:clamp(19px,2.4vw,24px);color:var(--muted);margin:0 0 22px;font-weight:500}
+.role b{color:var(--text);font-weight:600}
+.lead{color:var(--muted);max-width:600px;margin:0 0 30px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:12px;font-weight:600;font-size:15px;border:1px solid var(--line);background:var(--card);transition:.2s}
+.btn:hover{border-color:var(--accent);transform:translateY(-1px)}
+.btn.primary{background:var(--accent);color:#04111f;border-color:var(--accent)}
+.btn svg{width:18px;height:18px}
+.photo{position:relative;justify-self:center}
+.photo img{width:280px;height:280px;object-fit:cover;border-radius:28px;border:1px solid var(--line);box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+.photo:before{content:"";position:absolute;inset:-14px;border-radius:36px;background:linear-gradient(135deg,rgba(56,189,248,.35),rgba(167,139,250,.25));z-index:-1;filter:blur(18px)}
 
-			/* --- Styles for post headings and subheadings --- */
-			/* Make the section label (e.g. "Featured Project") larger/stronger */
-			.posts article header .date {
-			  display: block;
-			  font-size: clamp(1.05rem, 2.4vw, 1.3rem); /* heading (Featured Project) — larger */
-			  font-weight: 700;
-			  text-transform: uppercase;
-			  letter-spacing: 0.06em;
-			  margin-bottom: 0.35rem;
-			  color: #222;
-			}
+/* sections */
+section{padding:84px 0;border-top:1px solid var(--line)}
+.sec-head{margin-bottom:38px}
+.kicker{font-size:13px;color:var(--accent);letter-spacing:.14em;text-transform:uppercase;font-weight:600;margin-bottom:8px}
+h2{font-size:clamp(28px,4vw,38px);letter-spacing:-1px;margin:0;line-height:1.15}
+.sub{color:var(--muted);margin:10px 0 0;max-width:640px}
 
-			/* Base h2 styling for project title block */
-			.posts article header h2 {
-			  margin: 0 0 0.35rem 0;
-			  color: #111;
-			}
-			.posts article header h2 a {
-			  text-decoration: none;
-			  color: inherit;
-			}
+/* about */
+.about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:40px}
+.about-grid p{color:var(--muted);margin:0 0 16px}
+.about-grid p b{color:var(--text);font-weight:600}
+.facts{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.facts div{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.facts div:last-child{border:0}
+.facts span:first-child{color:var(--muted)}
+.facts span:last-child{text-align:right;font-weight:500}
 
-			/* Split the project title into main and sub lines (first larger than second) */
-			.posts article header h2 .title-main {
-			  display: block;
-			  font-size: clamp(1.25rem, 3.2vw, 1.6rem); /* larger project title line */
-			  font-weight: 700;
-			  line-height: 1.05;
-			}
-			.posts article header h2 .title-sub {
-			  display: block;
-			  font-size: clamp(0.95rem, 2.1vw, 1.05rem); /* smaller subheading line */
-			  font-weight: 500;
-			  color: #666; /* subtle contrast */
-			  margin-top: 0.12rem;
-			}
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.skill{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+.skill h3{font-size:15px;margin:0 0 14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:13px;padding:5px 11px;border-radius:999px;background:var(--bg2);border:1px solid var(--line);color:#c9d5e8}
 
-			/* Optional small spacing fix when image is missing */
-			.posts article header + .image.fit {
-				margin-top: 0.5rem;
-			}
-		</style>
-	</head>
-	<body class="is-preload">
+/* projects */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filter{background:var(--card);border:1px solid var(--line);color:var(--muted);padding:8px 14px;border-radius:999px;font:500 14px Inter,sans-serif;cursor:pointer}
+.filter.on{color:#04111f;background:var(--accent);border-color:var(--accent)}
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.proj{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:.25s}
+.proj:hover{border-color:#2f4670;transform:translateY(-3px)}
+.proj img{aspect-ratio:1200/627;object-fit:cover;border-bottom:1px solid var(--line)}
+.proj-body{padding:22px;display:flex;flex-direction:column;gap:12px;flex:1}
+.proj-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.tag{font-size:12px;color:var(--accent2);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.ctx{font-size:12px;color:var(--muted)}
+.proj h3{margin:0;font-size:20px;letter-spacing:-.3px}
+.proj p{margin:0;color:var(--muted);font-size:15px}
+.proj ul{margin:0;padding-left:18px;color:var(--muted);font-size:14.5px}
+.proj li{margin:3px 0}
+.proj .chips{margin-top:auto;padding-top:6px}
+.proj-links{display:flex;gap:16px;font-size:14px;font-weight:600}
+.proj-links a{color:var(--accent)}
+.proj-links a:hover{text-decoration:underline}
+.proj-links .na{color:var(--muted);font-weight:500}
+.hide{display:none}
 
-		<div id="wrapper" class="fade-in">
+/* experience */
+.timeline{position:relative;margin-left:8px}
+.timeline:before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:2px;background:var(--line)}
+.job{position:relative;padding:0 0 34px 34px}
+.job:last-child{padding-bottom:0}
+.job:before{content:"";position:absolute;left:-6px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--accent)}
+.job.minor:before{border-color:#475569}
+.job-head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px 16px}
+.job h3{margin:0;font-size:18px}
+.job .org{color:var(--accent);font-weight:500}
+.job .when{color:var(--muted);font-size:14px}
+.job .where{color:var(--muted);font-size:14px;margin:2px 0 8px}
+.job ul{margin:0;padding-left:18px;color:var(--muted)}
+.job li{margin:4px 0}
+.other{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:34px}
+.mini{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.mini h4{margin:0 0 2px;font-size:16px}
+.mini .when{color:var(--muted);font-size:13.5px}
+.mini p{margin:8px 0 0;color:var(--muted);font-size:14.5px}
+.label{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin:44px 0 0;font-weight:600}
 
-			<div id="intro">
-				<div style="text-align:center; margin-bottom:2rem;">
-					<img src="images/me.jpg" alt="Dawood Ahmed" style="width:250px;height:250px;border-radius:50%;object-fit:cover;border:2px solid rgba(0,0,0,0.08);" />
-					<div>
-						<h1 class="name"><span class="name-first">Dawood</span><span class="name-last">Ahmed</span></h1>
-						<p>Computer Science student with technical experience in Python, Java, SQL, and AI modeling, complemented by strong communication, and customer-facing experience. Recognized for adaptability, teamwork, and effective problem solving.</p>
-					</div>
-				</div>
-				<ul class="actions">
-					<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-				</ul>
-			</div>
+/* education */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.card h3{margin:0 0 4px;font-size:18px}
+.card .when{color:var(--muted);font-size:14px}
+.card p{color:var(--muted);margin:10px 0 0;font-size:15px}
+.list{list-style:none;margin:14px 0 0;padding:0}
+.list li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:15px}
+.list li span:last-child{color:var(--muted);white-space:nowrap;font-size:14px}
+details.courses{margin-top:22px}
+details.courses summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 24px;font-weight:600}
+details.courses summary::-webkit-details-marker{display:none}
+details.courses summary:after{content:"+";font-size:22px;color:var(--accent)}
+details.courses[open] summary:after{content:"–"}
+.course-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;padding:22px 4px 0}
+.course-grid h4{margin:0 0 10px;font-size:14px;color:var(--accent);text-transform:uppercase;letter-spacing:.08em}
+.course{display:flex;gap:12px;padding:7px 0;border-bottom:1px solid var(--line);font-size:15px}
+.course .mono{color:var(--accent2);min-width:58px;font-size:13.5px;padding-top:2px}
 
-			<header id="header">
-				<a href="index.html" class="logo">Portfolio</a>
-			</header>
+/* contact */
+.contact{text-align:center}
+.contact .sub{margin:12px auto 30px}
+.contact .btns{justify-content:center}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 
-			<nav id="nav">
-				<ul class="links">
-					<li class="active"><a href="index.html">Home</a></li>
-					<li><a href="generic.html">About / Experience</a></li>
-					<li><a href="elements.html">Skills / Projects</a></li>
-					<li><a href="courses.html">Courses</a></li>
-					<li><a href="resume.html">Resume</a></li>
-				</ul>
-				<ul class="icons">
-					<li><a href="https://github.com/Dawood-1123" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-					<li><a href="https://www.linkedin.com/in/ad-dawood/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-				</ul>
-			</nav>
+/* reveal */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 
-			<div id="main">
+@media (max-width:900px){
+  .hero-grid,.about-grid,.edu-grid{grid-template-columns:1fr}
+  .photo{order:-1;justify-self:start}
+  .photo img{width:150px;height:150px;border-radius:22px}
+  .skills{grid-template-columns:repeat(2,1fr)}
+  .projects,.other,.course-grid{grid-template-columns:1fr}
+  .hero{padding:56px 0 52px}
+}
+@media (max-width:720px){
+  .menu-btn{display:block}
+  .links{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 24px}
+  .links.open{display:flex}
+  .links a{padding:12px 0;border-bottom:1px solid var(--line)}
+  .links a:last-child{border:0}
+  .skills{grid-template-columns:1fr}
+  section{padding:64px 0}
+  .wrap{padding:0 16px}
+}
+</style>
+</head>
+<body>
 
-				<section class="posts">
-					<article>
-						<header>
-							<span class="date">Featured Project</span>
-							<h2>
-								<a href="#">
-									<span class="title-main">WLU Map Project</span>
-									<span class="title-sub">CP 470 Android Programming</span>
-								</a>
-							</h2>
-						</header>
-						<a href="#" class="image fit"><img src="images/wlump.png" alt="WLU Map Project Screenshot" style="height:400px; object-fit:contain;" /></a>
-						<p>Android application developed in <b>Java</b> integrating the Google Maps API. Enables users to navigate campus, search buildings, locate facilities, and view events. Demonstrates Android development, API integration, and UI/UX considerations.</p>
-						<ul class="actions special">
-							<li><a href="#" class="button">View on GitHub</a></li>
-							<li><a href="https://youtube.com/shorts/b1ltCtxxIaQ?feature=share" class="button">Watch Demo</a></li>
-						</ul>
-					</article>
+<header>
+  <nav class="wrap">
+    <a href="#top" class="logo">Dawood<span>.</span>Ahmed</a>
+    <button class="menu-btn" aria-label="Open menu" onclick="document.querySelector('.links').classList.toggle('open')">Menu</button>
+    <div class="links" onclick="this.classList.remove('open')">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
 
-					<article>
-						<header>
-							<span class="date">Academic</span>
-							<h2><a href="#">Honours BSc (Computer Science)</a></h2>
-						</header>
-						<a href="#" class="image fit"><img src="images/WLU.jpg" alt="" /></a>
-						<p>Honours Bachelor of Science in Computer Science at Wilfrid Laurier University. Coursework includes software development, systems, and algorithmic foundations.</p>
-						<ul class="actions special">
-							<li><a href="generic.html#education" class="button">Details</a></li>
-						</ul>
-					</article>
+<main id="top">
 
-					<article>
-    					<header>
-       						<span class="date">Primary Experience</span>
-        					<h2><a href="#">Tech Support Intern — Leopards Courier Services</a></h2>
-    					</header>
-						<a href="#" class="image fit"></a><img src="images/leop_logo.png" alt="Leopards Courier Services Logo" style="height:230px; object-fit:contain;" />
-    					<p>Provided technical support and maintained hardware/software for end-users, enhancing system reliability and IT skills.</p>
-    					<ul class="actions special">
-        				<li><a href="generic.html#intern" class="button">Details</a></li>
-    					</ul>
-					</article>
+<!-- HERO -->
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><span class="dot"></span>Open to data engineering &amp; data science roles</div>
+      <h1>Dawood Ahmed</h1>
+      <p class="role"><b>Data Engineering &amp; Data Science</b> · CS Graduate, Wilfrid Laurier University</p>
+      <p class="lead">I build data pipelines, databases and retrieval systems, and I like turning messy data into something people can actually use. Currently a Technology &amp; Compliance Intern at SanSoft 360.</p>
+      <div class="btns">
+        <a class="btn primary" href="#projects">View projects</a>
+        <a class="btn" href="Dawood-Ahmed-Resume.pdf" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M12 18v-6M9 15l3 3 3-3"/></svg>Resume</a>
+        <a class="btn" href="https://github.com/Dawood-1123" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg>GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/ad-dawood/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a>
+      </div>
+    </div>
+    <div class="photo"><img src="images/profile.jpg" alt="Portrait of Dawood Ahmed"></div>
+  </div>
+</div>
 
-					<article>
-						<header>
-							<span class="date">Leadership</span>
-							<h2><a href="#">CTP Leadership — WLIC (Volunteer)</a></h2>
-						</header>
-						<a href="#" class="image fit"><img src="images/WLIC.png" alt="" /></a>
-						<p>Organized student events, promoted participation, and supported an inclusive learning environment.</p>
-						<ul class="actions special">
-							<li><a href="generic.html#ctp" class="button">Details</a></li>
-						</ul>
-					</article>
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="kicker">About</div><h2>A bit about me</h2></div>
+    <div class="about-grid">
+      <div class="reveal">
+        <p>I'm a <b>Computer Science graduate from Wilfrid Laurier University</b> (Honours BSc, 2026) focused on <b>data engineering and data science</b>, and growing into machine learning.</p>
+        <p>My projects include an end-to-end cloud data pipeline built with Snowflake, dbt and Airflow, a retrieval-augmented generation system over Laurier's academic calendar, and a distributed Apriori algorithm that mines large retail datasets in parallel on the SHARCNET HPC cluster.</p>
+        <p>I'm currently a <b>Technology &amp; Compliance Intern at SanSoft 360</b>, where I work on PHIPA compliance documentation, risk analysis and internal tooling. That work has taught me to care about accuracy, documentation and how data is handled, not just how it's processed.</p>
+      </div>
+      <div class="facts reveal">
+        <div><span>Location</span><span>Waterloo, Ontario</span></div>
+        <div><span>Education</span><span>Honours BSc Computer Science, WLU</span></div>
+        <div><span>Currently</span><span>Tech &amp; Compliance Intern, SanSoft 360</span></div>
+        <div><span>Focus</span><span>Data engineering · Data science</span></div>
+        <div><span>Open to</span><span>Full-time roles · Relocation</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-					<article>
-						<header>
-							<span class="date">Tutoring</span>
-							<h2><a href="#">Peer Tutoring — Mathematics (Volunteer)</a></h2>
-						</header>
-						<a href="#" class="image fit"><img src="images/WLIC.png" alt="" /></a>
-						<p>Assisted peers with mathematics problem-solving while reinforcing clarity and communication skills.</p>
-						<ul class="actions special">
-							<li><a href="generic.html#tutor" class="button">Details</a></li>
-						</ul>
-					</article>
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="kicker">Skills</div><h2>Tools I work with</h2></div>
+    <div class="skills">
+      <div class="skill reveal"><h3>Languages</h3><div class="chips"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">R</span><span class="chip">Java</span><span class="chip">C</span></div></div>
+      <div class="skill reveal"><h3>Data Engineering</h3><div class="chips"><span class="chip">Snowflake</span><span class="chip">dbt</span><span class="chip">Apache Airflow</span><span class="chip">AWS S3</span><span class="chip">Docker</span><span class="chip">MySQL</span><span class="chip">Database design</span></div></div>
+      <div class="skill reveal"><h3>Data Science &amp; Retrieval</h3><div class="chips"><span class="chip">Statistics (R)</span><span class="chip">LightGBM</span><span class="chip">BM25</span><span class="chip">Dense retrieval</span><span class="chip">RAG</span><span class="chip">Power BI</span></div></div>
+      <div class="skill reveal"><h3>Systems &amp; Tools</h3><div class="chips"><span class="chip">MPI</span><span class="chip">SLURM / HPC</span><span class="chip">Linux</span><span class="chip">Git</span><span class="chip">Android SDK</span><span class="chip">Wireshark</span></div></div>
+    </div>
+  </div>
+</section>
 
-					<article>
-						<header>
-							<span class="date">Additional Work Experience</span>
-							<h2><a href="#">D Spot Desserts (Part-time)</a></h2>
-						</header>
-						<a href="#" class="image fit"><img src="images/ds.png" alt="D Spot Desserts Logo" style="height:180px; object-fit:contain;" /></a>
-						<p>Customer service & operations role in a fast-paced environment.</p>
-						<ul class="actions special">
-							<li><a href="generic.html#dspot" class="button">Details</a></li>
-						</ul>
-					</article>
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="kicker">Projects</div><h2>Things I've built</h2><p class="sub">A mix of personal, course and team projects. Most course repositories are private for academic integrity reasons; I'm happy to walk through any of them.</p></div>
 
-					<article>
-						<header>
-							<span class="date">Additional Work Experience</span>
-							<h2><a href="#">Popeyes Louisiana Kitchen (Part-time)</a></h2>
-						</header>
-						<a href="#" class="image fit"><img src="images/popeyes_logo.png" alt="" /></a>
-						<p>Food prep, order fulfillment, and teamwork in fast-paced operations.</p>
-						<ul class="actions special">
-							<li><a href="generic.html#popeyes" class="button">Details</a></li>
-						</ul>
-					</article>
+    <div class="filters reveal" role="tablist">
+      <button class="filter on" data-f="all">All</button>
+      <button class="filter" data-f="data">Data Engineering</button>
+      <button class="filter" data-f="ds">Data Science &amp; Retrieval</button>
+      <button class="filter" data-f="sys">Systems</button>
+      <button class="filter" data-f="sw">Software</button>
+    </div>
 
-				</section>
+    <div class="projects">
 
-				<!-- Contact Section -->
-				<section id="contact" style="padding:3rem 0;">
-					<header class="major">
-						<h2>Get in Touch</h2>
-						<p>Feel free to reach out for opportunities, collaboration, or questions.</p>
-					</header>
+      <article class="proj reveal" data-c="data">
+        <img src="images/project-ecommerce-pipeline.jpg" alt="Diagram of the e-commerce data pipeline: Python ingest to S3 to Snowflake to dbt to Power BI, orchestrated by Airflow" loading="lazy">
+        <div class="proj-body">
+          <div class="proj-top"><span class="tag">Data Engineering</span><span class="ctx">Personal project</span></div>
+          <h3>E-Commerce Data Pipeline</h3>
+          <p>An end-to-end ELT pipeline on the Olist Brazilian e-commerce dataset, from raw files to analytics dashboards.</p>
+          <ul>
+            <li>Python ingestion into AWS S3, loaded into Snowflake raw, staging and mart schemas</li>
+            <li>dbt Core models transform raw data into tested, analytics-ready tables</li>
+            <li>Apache Airflow, running in Docker, orchestrates the pipeline; Power BI reports on the marts</li>
+          </ul>
+          <div class="chips"><span class="chip">Python</span><span class="chip">AWS S3</span><span class="chip">Snowflake</span><span class="chip">dbt</span><span class="chip">Airflow</span><span class="chip">Docker</span><span class="chip">Power BI</span></div>
+          <div class="proj-links"><span class="na">Repository coming soon</span></div>
+        </div>
+      </article>
 
-					<div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
-						<p><b>Email:</b> <a href="mailto:dawood2ahmed1@gmail.com">dawood2ahmed1@gmail.com</a></p>
-						<p><b>Phone:</b> <a href="tel:+15197745970">+1 (519) 774-5970</a></p>
+      <article class="proj reveal" data-c="ds">
+        <img src="images/project-rag-system.jpg" alt="Diagram of the RAG system: calendar documents retrieved with BM25 and dense MiniLM, answered by Llama 3.2" loading="lazy">
+        <div class="proj-body">
+          <div class="proj-top"><span class="tag">Data Science &amp; Retrieval</span><span class="ctx">Course project</span></div>
+          <h3>RAG System: WLU Academic Calendar</h3>
+          <p>A local retrieval-augmented generation system that answers questions about Laurier courses using the undergraduate academic calendar.</p>
+          <ul>
+            <li>Built a custom BM25 index and a dense retriever using all-MiniLM-L6-v2</li>
+            <li>Generates grounded answers locally with Llama 3.2 through Ollama</li>
+            <li>Evaluated both retrievers; dense retrieval handled multi-hop questions better</li>
+          </ul>
+          <div class="chips"><span class="chip">Python</span><span class="chip">BM25</span><span class="chip">Sentence Transformers</span><span class="chip">Llama 3.2</span><span class="chip">Ollama</span></div>
+          <div class="proj-links"><a href="https://github.com/Dawood-1123/wlu-rag-system" target="_blank" rel="noopener">View code →</a></div>
+        </div>
+      </article>
 
-						<ul class="icons" style="margin-top:10px;">
-							<li><a href="https://github.com/Dawood-1123" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-							<li><a href="https://www.linkedin.com/in/ad-dawood/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-						</ul>
+      <article class="proj reveal" data-c="sys">
+        <img src="images/project-distributed-apriori.jpg" alt="Diagram of a master process distributing work to MPI ranks that produce frequent itemsets" loading="lazy">
+        <div class="proj-body">
+          <div class="proj-top"><span class="tag">Systems · Data Mining</span><span class="ctx">Team project · CP431</span></div>
+          <h3>Distributed Apriori Algorithm</h3>
+          <p>Parallel frequent-itemset mining for market-basket analysis, written in C with MPI and run on the SHARCNET HPC cluster.</p>
+          <ul>
+            <li>Distributed candidate counting across MPI processes and merged results</li>
+            <li>Scheduled and benchmarked jobs with SLURM on several large retail datasets</li>
+            <li>Delivered a design document, presentation and scaling analysis</li>
+          </ul>
+          <div class="chips"><span class="chip">C</span><span class="chip">MPI</span><span class="chip">SLURM</span><span class="chip">SHARCNET</span></div>
+          <div class="proj-links"><span class="na">Course repository (private)</span></div>
+        </div>
+      </article>
 
-						<ul class="actions" style="margin-top:1rem;">
-							<li><a href="mailto:dawood2ahmed1@gmail.com" class="button primary">Contact Me</a></li>
-						</ul>
-					</div>
-				</section>
+      <article class="proj reveal" data-c="ds">
+        <img src="images/project-learning-to-rank.jpg" alt="Bar chart illustrating ranked search results" loading="lazy">
+        <div class="proj-body">
+          <div class="proj-top"><span class="tag">Data Science &amp; Retrieval</span><span class="ctx">Course project · CP423</span></div>
+          <h3>Learning-to-Rank Search Model</h3>
+          <p>A search-result ranking model trained with LightGBM LambdaRank on the Yahoo! Learning-to-Rank dataset, alongside a Boolean retrieval engine over a TREC web corpus.</p>
+          <ul>
+            <li>Trained and tuned a LambdaRank model and evaluated it with nDCG and MAP</li>
+            <li>Built an inverted index and Boolean query engine for TREC-format documents</li>
+          </ul>
+          <div class="chips"><span class="chip">Python</span><span class="chip">LightGBM</span><span class="chip">LambdaRank</span><span class="chip">Information Retrieval</span></div>
+          <div class="proj-links"><span class="na">Course repository (private)</span></div>
+        </div>
+      </article>
 
-			</div>
+      <article class="proj reveal" data-c="sw data">
+        <img src="images/project-bookit.jpg" alt="Illustration of a booking calendar with selected time slots" loading="lazy">
+        <div class="proj-body">
+          <div class="proj-top"><span class="tag">Software · Databases</span><span class="ctx">Team project · CP476</span></div>
+          <h3>BookIt: Service Booking Platform</h3>
+          <p>A web platform for booking local services, built by a team using an agile workflow.</p>
+          <ul>
+            <li>Back-end developer responsible for user authentication</li>
+            <li>Designed the relational schema for users, categories, services, time slots, bookings and reviews</li>
+            <li>Set up the team's Kanban board in GitHub Projects</li>
+          </ul>
+          <div class="chips"><span class="chip">Back-End</span><span class="chip">Authentication</span><span class="chip">SQL</span><span class="chip">GitHub Projects</span></div>
+          <div class="proj-links"><span class="na">Team repository (private)</span></div>
+        </div>
+      </article>
 
-			<!-- Footer -->
-			<footer id="footer">
-				<section class="split contact">
-					<section class="alt">
-						<h3>Location</h3>
-						<p>Ontario</p>
-					</section>
-				</section>
-			</footer>
+      <article class="proj reveal" data-c="data">
+        <img src="images/project-carrental-db.jpg" alt="Entity diagram with customers, rentals, vehicles and payments tables" loading="lazy">
+        <div class="proj-body">
+          <div class="proj-top"><span class="tag">Databases</span><span class="ctx">Course project</span></div>
+          <h3>CarRental Database System</h3>
+          <p>A normalized relational database for a car rental business with a Python application layer.</p>
+          <ul>
+            <li>Designed a normalized MySQL schema with keys and constraints</li>
+            <li>Built a Python interface for managing customers, vehicles and rentals</li>
+          </ul>
+          <div class="chips"><span class="chip">Python</span><span class="chip">MySQL</span><span class="chip">SQL</span><span class="chip">Normalization</span></div>
+          <div class="proj-links"><span class="na">Repository coming soon</span></div>
+        </div>
+      </article>
 
-			<div id="copyright">
-				<ul><li>&copy; 2026 Dawood Ahmed</li><li>Design Template: HTML5 UP</li></ul>
-			</div>
+      <article class="proj reveal" data-c="sw">
+        <img src="images/project-campus-map.jpg" alt="Illustration of a phone showing a campus map with a location pin" loading="lazy">
+        <div class="proj-body">
+          <div class="proj-top"><span class="tag">Software · Mobile</span><span class="ctx">Course project · CP470</span></div>
+          <h3>WLU Campus Map App</h3>
+          <p>An Android app for navigating Laurier's campus: search buildings, find facilities and view events on an interactive map.</p>
+          <div class="chips"><span class="chip">Java</span><span class="chip">Android SDK</span><span class="chip">Google Maps API</span></div>
+          <div class="proj-links"><a href="https://youtube.com/shorts/b1ltCtxxIaQ?feature=share" target="_blank" rel="noopener">Watch demo →</a></div>
+        </div>
+      </article>
 
-		</div>
+      <article class="proj reveal" data-c="sw">
+        <img src="images/project-tictactoe.jpg" alt="Tic tac toe board illustration" loading="lazy">
+        <div class="proj-body">
+          <div class="proj-top"><span class="tag">Software</span><span class="ctx">Personal project</span></div>
+          <h3>Tic Tac Toe with AI</h3>
+          <p>A desktop Tic Tac Toe game with score tracking and selectable AI difficulty levels.</p>
+          <div class="chips"><span class="chip">Java</span><span class="chip">Java Swing</span></div>
+          <div class="proj-links"><a href="https://github.com/Dawood-1123/TicTacToe" target="_blank" rel="noopener">View code →</a></div>
+        </div>
+      </article>
 
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.scrollex.min.js"></script>
-		<script src="assets/js/jquery.scrolly.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
+    </div>
+  </div>
+</section>
 
-	</body>
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="kicker">Experience</div><h2>Where I've worked</h2></div>
+    <div class="timeline">
+      <div class="job reveal">
+        <div class="job-head"><h3>Technology &amp; Compliance Intern · <span class="org">SanSoft 360</span></h3><span class="when">Jun 2026 – Present</span></div>
+        <div class="where">Burlington, ON · Remote</div>
+        <ul>
+          <li>Cross-verify compliance documentation, including PHIPA Business Requirements Documents, against source risk documents and deliver precise corrections</li>
+          <li>Assist with software development, testing and technical documentation for internal tools</li>
+          <li>Support compliance working papers, research and data analysis for advisory engagements</li>
+          <li>Audit websites and contribute documentation and content for digital initiatives</li>
+        </ul>
+      </div>
+      <div class="job reveal">
+        <div class="job-head"><h3>Information Technology Intern · <span class="org">Leopards Courier Services</span></h3><span class="when">Jun 2024 – Jul 2024</span></div>
+        <div class="where">Karachi, Pakistan · On-site</div>
+        <ul>
+          <li>Troubleshot and resolved technical issues for end users across teams, keeping downtime low</li>
+          <li>Installed, configured and maintained operating systems, hardware and software</li>
+        </ul>
+      </div>
+      <div class="job reveal">
+        <div class="job-head"><h3>CTP Leader (Volunteer) · <span class="org">Wilfrid Laurier International College</span></h3><span class="when">Jan 2024 – Apr 2024</span></div>
+        <div class="where">Brantford, ON</div>
+        <ul><li>Organized and facilitated student events and initiatives that encouraged participation and an inclusive learning environment</li></ul>
+      </div>
+      <div class="job reveal">
+        <div class="job-head"><h3>Peer Tutor, Mathematics (Volunteer) · <span class="org">Wilfrid Laurier International College</span></h3><span class="when">Aug 2023 – Dec 2023</span></div>
+        <div class="where">Brantford, ON</div>
+        <ul><li>Helped peers work through math problems and aligned sessions with course objectives by coordinating with instructors</li></ul>
+      </div>
+    </div>
+
+    <p class="label reveal">Other work experience</p>
+    <div class="other">
+      <div class="mini reveal"><h4>Customer Service · D Spot Desserts</h4><div class="when">Part-time · Sep 2025 – Present</div><p>Front and back-of-house operations, order fulfillment and customer service in a fast-paced environment.</p></div>
+      <div class="mini reveal"><h4>Kitchen &amp; Front Counter · Popeyes Louisiana Kitchen</h4><div class="when">Part-time · Oct 2024 – Sep 2025</div><p>Food preparation, order fulfillment and teamwork while following food safety standards.</p></div>
+      <div class="mini reveal"><h4>Customer Service Representative · Paktech Solutions</h4><div class="when">Jul 2022 – Nov 2022</div><p>Handled customer inquiries and support in Karachi, Pakistan.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="kicker">Education</div><h2>Education &amp; credentials</h2></div>
+    <div class="edu-grid">
+      <div class="card reveal">
+        <h3>Honours BSc, Computer Science</h3>
+        <div class="when">Wilfrid Laurier University · Waterloo, ON · 2023 – 2026</div>
+        <p>Coursework across data structures, databases, operating systems, parallel computing, information retrieval, networks and statistics.</p>
+        <ul class="list">
+          <li><span>AS-Level, Pre-Engineering · The City School</span><span>2021 – 2022</span></li>
+          <li><span>O-Level · The City School</span><span>2021</span></li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <h3>Certifications</h3>
+        <ul class="list">
+          <li><span>AI Fluency: Framework &amp; Foundations · Anthropic</span><span>Jul 2026</span></li>
+          <li><span>Claude 101 · Anthropic</span><span>Jul 2026</span></li>
+        </ul>
+        <h3 style="margin-top:22px">Awards</h3>
+        <ul class="list">
+          <li><span>WLIC Scholarship · Wilfrid Laurier International College</span><span></span></li>
+          <li><span>70% Jump Rule (UTP Stage I exemption) · WLIC</span><span>Apr 2023</span></li>
+          <li><span>O-Level High Achiever · The City School</span><span>Aug 2021</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <details class="courses reveal">
+      <summary>Relevant coursework</summary>
+      <div class="course-grid">
+        <div>
+          <h4>Data, Retrieval &amp; Parallel Computing</h4>
+          <div class="course"><span class="mono">CP363</span><span>Database I</span></div>
+          <div class="course"><span class="mono">CP423</span><span>Text Retrieval &amp; Search Engines</span></div>
+          <div class="course"><span class="mono">CP431</span><span>Parallel Programming</span></div>
+          <div class="course"><span class="mono">ST230</span><span>Intro to Probability &amp; Statistics for Science</span></div>
+          <h4 style="margin-top:22px">Systems &amp; Security</h4>
+          <div class="course"><span class="mono">CP367</span><span>Intro to System Programming</span></div>
+          <div class="course"><span class="mono">CP386</span><span>Operating Systems</span></div>
+          <div class="course"><span class="mono">CP372</span><span>Computer Networks</span></div>
+          <div class="course"><span class="mono">CP460</span><span>Applied Cryptography</span></div>
+        </div>
+        <div>
+          <h4>Programming &amp; Software</h4>
+          <div class="course"><span class="mono">CP104</span><span>Introduction to Programming</span></div>
+          <div class="course"><span class="mono">CP164</span><span>Data Structures I</span></div>
+          <div class="course"><span class="mono">CP213</span><span>Intro to Object-Oriented Programming</span></div>
+          <div class="course"><span class="mono">CP264</span><span>Data Structures II</span></div>
+          <div class="course"><span class="mono">CP317</span><span>Software Engineering</span></div>
+          <div class="course"><span class="mono">CP470</span><span>Android Programming</span></div>
+          <div class="course"><span class="mono">CP476</span><span>Internet Computing</span></div>
+          <h4 style="margin-top:22px">Theory &amp; Math</h4>
+          <div class="course"><span class="mono">CP414</span><span>Foundations of Computing</span></div>
+          <div class="course"><span class="mono">CP351</span><span>Quantum Computing</span></div>
+          <div class="course"><span class="mono">CP373</span><span>Ethics &amp; Professional Practice in CS</span></div>
+          <div class="course"><span class="mono">MA103</span><span>Calculus I</span></div>
+          <div class="course"><span class="mono">MA123</span><span>Intro to Linear Algebra with Applications</span></div>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="wrap reveal">
+    <div class="kicker">Contact</div>
+    <h2>Let's talk</h2>
+    <p class="sub">I'm looking for data engineering and data science roles. If you have an opportunity or just want to chat, reach out.</p>
+    <div class="btns">
+      <a class="btn primary" href="mailto:dawood2ahmed1@gmail.com">dawood2ahmed1@gmail.com</a>
+      <a class="btn" href="tel:+15197745970">+1 (519) 774-5970</a>
+      <a class="btn" href="https://www.linkedin.com/in/ad-dawood/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/Dawood-1123" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap"><span>© 2026 Dawood Ahmed</span><span>Waterloo, Ontario</span></div>
+</footer>
+
+<script>
+// project filters
+document.querySelectorAll('.filter').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.filter').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  const f=b.dataset.f;
+  document.querySelectorAll('.proj').forEach(p=>{
+    p.classList.toggle('hide', f!=='all' && !p.dataset.c.split(' ').includes(f));
+  });
+}));
+// reveal on scroll
+const io=('IntersectionObserver' in window)?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.08}):null;
+document.querySelectorAll('.reveal').forEach(el=>io?io.observe(el):el.classList.add('in'));
+</script>
+</body>
 </html>
